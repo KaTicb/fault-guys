@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgw2xminsxkeh"]
+[gd_scene load_steps=11 format=3 uid="uid://cgw2xminsxkeh"]
 
+[ext_resource type="Texture2D" uid="uid://5kxj2y2rm43f" path="res://Textures/ground/aerial_grass_rock_diff_1k.png" id="1_5kih0"]
 [ext_resource type="PackedScene" uid="uid://dpt0uw4cvo7ht" path="res://Characters/Bot/bot.tscn" id="1_ptjcj"]
+[ext_resource type="Texture2D" uid="uid://u73qgvrats4t" path="res://Textures/ground/aerial_grass_rock_nor_gl_1k.png" id="2_pwa3v"]
+[ext_resource type="Texture2D" uid="uid://ddf48t532c46r" path="res://Textures/ground/aerial_grass_rock_rough_1k.png" id="3_b6w08"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nffxo"]
 sky_top_color = Color(0.545098, 0.643137, 1, 1)
@@ -19,12 +22,36 @@ sky = SubResource("Sky_fiue6")
 [sub_resource type="PlaneMesh" id="PlaneMesh_2e4te"]
 size = Vector2(10, 10)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ic1j1"]
+albedo_texture = ExtResource("1_5kih0")
+roughness_texture = ExtResource("3_b6w08")
+normal_enabled = true
+normal_texture = ExtResource("2_pwa3v")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mw5ea"]
+data = PackedVector3Array(5, 0, 5, -5, 0, 5, 5, 0, -5, -5, 0, 5, -5, 0, -5, 5, 0, -5)
+
 [node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_dlr3q")
 
-[node name="StartGround" type="MeshInstance3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.148966, -0.715759, 0.682274, -0.722817, 0.392023, 0.569081, -0.674792, -0.577933, -0.458965, 14.907, 12.9938, -13.0563)
+shadow_enabled = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="StartGround" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("PlaneMesh_2e4te")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ic1j1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_mw5ea")
 
 [node name="Bot" parent="." instance=ExtResource("1_ptjcj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Bot"]
+transform = Transform3D(-1, -2.26267e-08, 8.44439e-08, 0, 0.965926, 0.258819, -8.74228e-08, 0.258819, -0.965926, 0, 2.67926, -2.43481)
