@@ -1,7 +1,11 @@
-[gd_scene load_steps=16 format=4 uid="uid://dpt0uw4cvo7ht"]
+[gd_scene load_steps=17 format=4 uid="uid://dpt0uw4cvo7ht"]
 
 [ext_resource type="Script" path="res://Characters/Bot/bot.gd" id="1_5oaeu"]
 [ext_resource type="Texture2D" uid="uid://dtfhaim5ygi6n" path="res://Characters/Bot/source/LowPolyRobot/lp_robot_d.png" id="1_ntgrb"]
+[ext_resource type="Script" path="res://Characters/Bot/low_poly_robot.gd" id="2_p5jws"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bds6j"]
+height = 1.73138
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g0bfr"]
 resource_name = "lpRobot"
@@ -357,6 +361,7 @@ tracks/32/keys = PackedFloat32Array(0.0333333, 1, -9.31323e-10, -3.72529e-09, -1
 
 [sub_resource type="Animation" id="Animation_xcf6v"]
 resource_name = "walk"
+loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -595,9 +600,6 @@ _data = {
 "walk": SubResource("Animation_xcf6v")
 }
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bds6j"]
-height = 1.73138
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gupj8"]
 animation = &"tpose"
 
@@ -617,15 +619,21 @@ advance_condition = &"tpose"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_adi4q"]
 states/tpose/node = SubResource("AnimationNodeAnimation_gupj8")
-states/tpose/position = Vector2(353, 44)
+states/tpose/position = Vector2(358, 158)
 states/walk/node = SubResource("AnimationNodeAnimation_h6d2v")
-states/walk/position = Vector2(353, 146)
+states/walk/position = Vector2(358, 53)
 transitions = ["Start", "tpose", SubResource("AnimationNodeStateMachineTransition_f1rpa"), "tpose", "walk", SubResource("AnimationNodeStateMachineTransition_0ynqs"), "walk", "tpose", SubResource("AnimationNodeStateMachineTransition_0o5a5")]
 
 [node name="Bot" type="CharacterBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_5oaeu")
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.866169, 0)
+shape = SubResource("CapsuleShape3D_bds6j")
+
 [node name="LowPolyRobot" type="Node3D" parent="."]
+script = ExtResource("2_p5jws")
 
 [node name="Skeleton3D" type="Skeleton3D" parent="LowPolyRobot"]
 bones/0/name = "lpBip"
@@ -661,21 +669,21 @@ bones/4/parent = 3
 bones/4/rest = Transform3D(0.995537, 0.0943671, 2.61737e-07, -0.0943671, 0.995537, -1.23773e-08, -2.61737e-07, -1.23774e-08, 1, 0.161892, -0.000165458, -4.58895e-10)
 bones/4/enabled = true
 bones/4/position = Vector3(0.161892, -0.000165458, -4.58895e-10)
-bones/4/rotation = Quaternion(-1.73388e-14, 1.31015e-07, -0.0472363, 0.998884)
+bones/4/rotation = Quaternion(-1.66466e-14, 1.31015e-07, -0.0472363, 0.998884)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "lpBip Neck"
 bones/5/parent = 4
 bones/5/rest = Transform3D(0.969633, -0.244566, -6.78327e-07, 0.244566, 0.969633, -8.42268e-08, 6.78327e-07, -8.42266e-08, 1, 0.256901, 0.0107693, 1.72964e-08)
 bones/5/enabled = true
 bones/5/position = Vector3(0.256901, 0.0107693, 1.72964e-08)
-bones/5/rotation = Quaternion(4.296e-14, -3.41768e-07, 0.123222, 0.992379)
+bones/5/rotation = Quaternion(4.36301e-14, -3.41768e-07, 0.123222, 0.992379)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "lpBip Head"
 bones/6/parent = 5
 bones/6/rest = Transform3D(0.992439, 0.122738, 3.40421e-07, -0.122738, 0.992439, -2.09703e-08, -3.40421e-07, -2.09707e-08, 1, 0.0552774, -1.90735e-08, 0)
 bones/6/enabled = true
 bones/6/position = Vector3(0.0552774, -1.90735e-08, 0)
-bones/6/rotation = Quaternion(-8.94311e-14, 1.70533e-07, -0.0614851, 0.998108)
+bones/6/rotation = Quaternion(-9.07643e-14, 1.70533e-07, -0.0614851, 0.998108)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "lpBip HeadNub"
 bones/7/parent = 6
@@ -801,7 +809,7 @@ bones/24/parent = 23
 bones/24/rest = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, -1.49012e-08, -1, 0.0643986, 0, 0)
 bones/24/enabled = true
 bones/24/position = Vector3(0.0643986, 0, 0)
-bones/24/rotation = Quaternion(0, 7.45058e-09, 1, 0)
+bones/24/rotation = Quaternion(-4.56201e-25, 7.45058e-09, 1, -6.12303e-17)
 bones/24/scale = Vector3(-1, -1, -1)
 bones/25/name = "lpBip R Finger1"
 bones/25/parent = 21
@@ -836,7 +844,7 @@ bones/29/parent = 28
 bones/29/rest = Transform3D(0.999999, 0.00129273, 2.98024e-08, -0.00129273, 0.999999, -3.85187e-11, -2.98024e-08, -7.63799e-15, 1, 0.372092, 0, 0)
 bones/29/enabled = true
 bones/29/position = Vector3(0.372092, 0, 0)
-bones/29/rotation = Quaternion(9.62778e-12, 1.49012e-08, -0.000646364, 1)
+bones/29/rotation = Quaternion(9.63158e-12, 1.49012e-08, -0.000646364, 1)
 bones/29/scale = Vector3(1, 1, 1)
 bones/30/name = "lpBip L Foot"
 bones/30/parent = 29
@@ -850,7 +858,7 @@ bones/31/parent = 30
 bones/31/rest = Transform3D(0.0155374, -0.999879, 1.59815e-16, 0.999879, 0.0155374, -2.1797e-15, 2.17696e-15, 1.93662e-16, 1, 0.139923, 0.131066, 0)
 bones/31/enabled = true
 bones/31/position = Vector3(0.139923, 0.131066, 0)
-bones/31/rotation = Quaternion(8.32667e-16, -7.0769e-16, 0.701592, 0.712579)
+bones/31/rotation = Quaternion(4.97345e-16, -1.63675e-16, 0.701592, 0.712579)
 bones/31/scale = Vector3(1, 1, 1)
 bones/32/name = "lpBip L Toe0Nub"
 bones/32/parent = 31
@@ -871,7 +879,7 @@ bones/34/parent = 33
 bones/34/rest = Transform3D(0.999999, 0.00129272, -4.47058e-08, -0.00129272, 0.999999, -1.80485e-09, 4.47034e-08, 1.86264e-09, 1, 0.372092, 0, 0)
 bones/34/enabled = true
 bones/34/position = Vector3(0.372092, 0, 0)
-bones/34/rotation = Quaternion(9.16874e-10, -2.23523e-08, -0.00064636, 1)
+bones/34/rotation = Quaternion(9.16875e-10, -2.23523e-08, -0.00064636, 1)
 bones/34/scale = Vector3(1, 1, 1)
 bones/35/name = "lpBip R Foot"
 bones/35/parent = 34
@@ -885,7 +893,7 @@ bones/36/parent = 35
 bones/36/rest = Transform3D(0.0155374, -0.999879, 4.40503e-15, 0.999879, 0.0155374, -1.42762e-15, 1.35901e-15, 4.42668e-15, 1, 0.139923, 0.131066, 0)
 bones/36/enabled = true
 bones/36/position = Vector3(0.139923, 0.131066, 0)
-bones/36/rotation = Quaternion(2.05391e-15, 1.06866e-15, 0.701592, 0.712579)
+bones/36/rotation = Quaternion(-1.35553e-16, -7.86813e-16, 0.701592, 0.712579)
 bones/36/scale = Vector3(1, 1, 1)
 bones/37/name = "lpBip R Toe0Nub"
 bones/37/parent = 36
@@ -903,10 +911,6 @@ skin = SubResource("Skin_52gve")
 libraries = {
 "": SubResource("AnimationLibrary_ivtsv")
 }
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.866169, 0)
-shape = SubResource("CapsuleShape3D_bds6j")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../LowPolyRobot")
