@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bcu7q7ouo6epj"]
+
+[ext_resource type="Texture2D" uid="uid://dhhnmjcvr0g4f" path="res://Textures/fence/textures/wood_floor_worn_diff_2k.png" id="1_ciref"]
+[ext_resource type="Texture2D" uid="uid://ckootgashnnec" path="res://Textures/fence/textures/wood_floor_worn_nor_gl_2k.png" id="2_ps4fc"]
+[ext_resource type="Texture2D" uid="uid://dxnegp561oo7m" path="res://Textures/fence/textures/wood_floor_worn_rough_2k.png" id="3_bb1ww"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_boy7h"]
+albedo_texture = ExtResource("1_ciref")
+roughness_texture = ExtResource("3_bb1ww")
+normal_enabled = true
+normal_texture = ExtResource("2_ps4fc")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efv35"]
+albedo_texture = ExtResource("1_ciref")
+roughness_texture = ExtResource("3_bb1ww")
+normal_enabled = true
+normal_texture = ExtResource("2_ps4fc")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2juv6"]
+albedo_texture = ExtResource("1_ciref")
+roughness_texture = ExtResource("3_bb1ww")
+normal_enabled = true
+normal_texture = ExtResource("2_ps4fc")
+uv1_triplanar = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D"]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+size = Vector3(1, 0.0922852, 0.125)
+material = SubResource("StandardMaterial3D_boy7h")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.3, 0.275, 0)
+size = Vector3(0.545654, 0.0922852, 0.125)
+material = SubResource("StandardMaterial3D_efv35")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.3, 0.275, 0)
+size = Vector3(0.545654, 0.0922852, 0.125)
+material = SubResource("StandardMaterial3D_2juv6")

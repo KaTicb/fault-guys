@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://c63w6u714a7cx"]
+
+[ext_resource type="Texture2D" uid="uid://deb3s8w3k307p" path="res://images/BackForPanel.jpg" id="1_i7thi"]
+[ext_resource type="Script" path="res://game_over.gd" id="1_o7jgv"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o7jgv")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 5.22222
+anchor_bottom = 6.19753
+texture = ExtResource("1_i7thi")
+metadata/_edit_use_anchors_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.191
+anchor_bottom = 0.161
+offset_right = 2.94397
+offset_bottom = 0.42395
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/CenterContainer"]
+layout_mode = 2
+
+[node name="GameOver" type="Label" parent="TextureRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Game over! :("
+horizontal_alignment = 1
+
+[node name="Replay" type="Button" parent="TextureRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Replay"
+
+[node name="Menu" type="Button" parent="TextureRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Menu"
+
+[connection signal="pressed" from="TextureRect/CenterContainer/VBoxContainer/Replay" to="." method="_on_replay_pressed"]
+[connection signal="pressed" from="TextureRect/CenterContainer/VBoxContainer/Menu" to="." method="_on_menu_pressed"]

@@ -1,9 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgw2xminsxkeh"]
+[gd_scene load_steps=14 format=3 uid="uid://cgw2xminsxkeh"]
 
-[ext_resource type="Texture2D" uid="uid://5kxj2y2rm43f" path="res://Textures/ground/aerial_grass_rock_diff_1k.png" id="1_5kih0"]
+[ext_resource type="Texture2D" uid="uid://bl2pib5svpl40" path="res://Textures/ground/aerial_grass_rock_diff_1k.png" id="1_5kih0"]
 [ext_resource type="PackedScene" uid="uid://dpt0uw4cvo7ht" path="res://Characters/Bot/bot.tscn" id="1_ptjcj"]
-[ext_resource type="Texture2D" uid="uid://u73qgvrats4t" path="res://Textures/ground/aerial_grass_rock_nor_gl_1k.png" id="2_pwa3v"]
-[ext_resource type="Texture2D" uid="uid://ddf48t532c46r" path="res://Textures/ground/aerial_grass_rock_rough_1k.png" id="3_b6w08"]
+[ext_resource type="Texture2D" uid="uid://c16yieok3q6cq" path="res://Textures/ground/aerial_grass_rock_nor_gl_1k.png" id="2_pwa3v"]
+[ext_resource type="Texture2D" uid="uid://b856fovxuhxp4" path="res://Textures/ground/aerial_grass_rock_rough_1k.png" id="3_b6w08"]
+[ext_resource type="PackedScene" uid="uid://bcu7q7ouo6epj" path="res://Fense models/fence.tscn" id="5_qsyl3"]
+[ext_resource type="PackedScene" uid="uid://iptr15wffahy" path="res://Fense models/triple_fense.tscn" id="6_cvrg0"]
+[ext_resource type="PackedScene" uid="uid://q2yhw2hnqq5q" path="res://Floor models/wood_base_platform.tscn" id="6_voujx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nffxo"]
 sky_top_color = Color(0.545098, 0.643137, 1, 1)
@@ -49,6 +52,58 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ic1j1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_mw5ea")
+
+[node name="FenseForStart" type="CSGCombiner3D" parent="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, 4.5)
+use_collision = true
+
+[node name="Fense" parent="StaticBody3D/FenseForStart" instance=ExtResource("5_qsyl3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.07)
+
+[node name="Fense2" parent="StaticBody3D/FenseForStart" instance=ExtResource("5_qsyl3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.437663, 0, 0.508211)
+
+[node name="Fense3" parent="StaticBody3D/FenseForStart" instance=ExtResource("5_qsyl3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0141525, 0, 9.92545)
+
+[node name="TripleFense" parent="StaticBody3D/FenseForStart" instance=ExtResource("6_cvrg0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.99754, 0, 0.0695901)
+
+[node name="TripleFense2" parent="StaticBody3D/FenseForStart" instance=ExtResource("6_cvrg0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.99923, 0, 0.0694127)
+
+[node name="TripleFense3" parent="StaticBody3D/FenseForStart" instance=ExtResource("6_cvrg0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.4355, 0, 1.50876)
+
+[node name="TripleFense4" parent="StaticBody3D/FenseForStart" instance=ExtResource("6_cvrg0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.42714, 0, 8.49675)
+
+[node name="TripleFense5" parent="StaticBody3D/FenseForStart" instance=ExtResource("6_cvrg0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.00085, 0, 0.0698352)
+
+[node name="TripleFense6" parent="StaticBody3D/FenseForStart" instance=ExtResource("6_cvrg0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.99056, 0, 9.92459)
+
+[node name="TripleFense7" parent="StaticBody3D/FenseForStart" instance=ExtResource("6_cvrg0")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -4.99351, 0, 9.92326)
+
+[node name="TripleFense8" parent="StaticBody3D/FenseForStart" instance=ExtResource("6_cvrg0")]
+transform = Transform3D(-1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, -7.98173, 0, 9.92664)
+
+[node name="TripleFense9" parent="StaticBody3D/FenseForStart" instance=ExtResource("6_cvrg0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.438192, 0, 8.50063)
+
+[node name="TripleFense10" parent="StaticBody3D/FenseForStart" instance=ExtResource("6_cvrg0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.43747, 0, 5.50659)
+
+[node name="TripleFense11" parent="StaticBody3D/FenseForStart" instance=ExtResource("6_cvrg0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.438635, 0, 2.51077)
+
+[node name="FirstPath" type="CSGCombiner3D" parent="StaticBody3D"]
+use_collision = true
+
+[node name="WoodBasePlatform" parent="StaticBody3D/FirstPath" instance=ExtResource("6_voujx")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.667842, 0, -6.4823)
 
 [node name="Bot" parent="." instance=ExtResource("1_ptjcj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)

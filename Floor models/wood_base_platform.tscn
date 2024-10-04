@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://q2yhw2hnqq5q"]
+
+[ext_resource type="Texture2D" uid="uid://bfkblnnrauyr5" path="res://Textures/floor/dark_wooden_planks_diff_2k.png" id="1_8ujpk"]
+[ext_resource type="Texture2D" uid="uid://jlw4s6jwmtv8" path="res://Textures/floor/dark_wooden_planks_nor_gl_2k.png" id="2_ygbuq"]
+[ext_resource type="Texture2D" uid="uid://1e3ulapvsl2h" path="res://Textures/floor/dark_wooden_planks_rough_2k.png" id="3_kjixy"]
+[ext_resource type="PackedScene" uid="uid://iptr15wffahy" path="res://Fense models/triple_fense.tscn" id="4_qyrvm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xkko"]
+albedo_texture = ExtResource("1_8ujpk")
+roughness_texture = ExtResource("3_kjixy")
+normal_enabled = true
+normal_texture = ExtResource("2_ygbuq")
+uv1_triplanar = true
+
+[node name="WoodBasePlatform" type="CSGCombiner3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 3, 0, 0, 0)
+size = Vector3(1, 0.152832, 1)
+material = SubResource("StandardMaterial3D_7xkko")
+
+[node name="TripleFense" parent="." instance=ExtResource("4_qyrvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4)
+
+[node name="TripleFense2" parent="." instance=ExtResource("4_qyrvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.4)

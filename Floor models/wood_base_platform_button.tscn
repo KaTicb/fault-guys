@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://de8bqdhu1r65b"]
+
+[ext_resource type="PackedScene" uid="uid://q2yhw2hnqq5q" path="res://Floor models/wood_base_platform.tscn" id="1_ty4ba"]
+
+[node name="WoodBasePlatformButton" type="CSGCombiner3D"]
+
+[node name="WoodBasePlatform" parent="." instance=ExtResource("1_ty4ba")]

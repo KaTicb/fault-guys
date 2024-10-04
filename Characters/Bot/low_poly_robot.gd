@@ -1,7 +1,7 @@
 extends Node3D
 
 
-func rotate_by_character(y, x):
+func rotate_by_character():
 	if Input.is_action_pressed("ui_down"):
 		rotation.y = PI
 	elif Input.is_action_pressed("ui_up"):
