@@ -1,7 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://de8bqdhu1r65b"]
+[gd_scene load_steps=6 format=3 uid="uid://de8bqdhu1r65b"]
 
 [ext_resource type="PackedScene" uid="uid://q2yhw2hnqq5q" path="res://Floor models/wood_base_platform.tscn" id="1_ty4ba"]
+[ext_resource type="PackedScene" uid="uid://b8vl3ap0jh4u6" path="res://Regular and trap blocks/damage_button.tscn" id="2_x2wed"]
+[ext_resource type="PackedScene" uid="uid://cj8coeoyswlaa" path="res://Regular and trap blocks/button.tscn" id="3_u7i5d"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3jv0u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2kri5"]
 
 [node name="WoodBasePlatformButton" type="CSGCombiner3D"]
 
 [node name="WoodBasePlatform" parent="." instance=ExtResource("1_ty4ba")]
+
+[node name="DamBut" parent="WoodBasePlatform" instance=ExtResource("2_x2wed")]
+transform = Transform3D(0.9, 0, 0, 0, 0.024, 0, 0, 0, 0.9, 0.974146, 0.0494572, -0.284892)
+mesh = SubResource("BoxMesh_3jv0u")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_2kri5")
+
+[node name="DamBut2" parent="WoodBasePlatform" instance=ExtResource("2_x2wed")]
+transform = Transform3D(0.9, 0, 0, 0, 0.024, 0, 0, 0, 0.9, -0.0510123, 0.0511287, 0.46182)
+mesh = SubResource("BoxMesh_3jv0u")
+surface_material_override/0 = SubResource("StandardMaterial3D_2kri5")
+
+[node name="But" parent="WoodBasePlatform" instance=ExtResource("3_u7i5d")]
+transform = Transform3D(0.9, 0, 0, 0, 0.024, 0, 0, 0, 0.9, 0, 0.0504599, -0.783272)
+skeleton = NodePath("../..")
+
+[node name="DamBut3" parent="WoodBasePlatform" instance=ExtResource("2_x2wed")]
+transform = Transform3D(0.9, 0, 0, 0, 0.024, 0, 0, 0, 0.9, -1.03589, 0.0493844, -0.325218)
+
+[node name="But2" parent="WoodBasePlatform" instance=ExtResource("3_u7i5d")]
+transform = Transform3D(0.9, 0, 0, 0, 0.024, 0, 0, 0, 0.9, -1.11609, 0.0512286, 0.830449)
+
+[node name="But3" parent="WoodBasePlatform" instance=ExtResource("3_u7i5d")]
+transform = Transform3D(0.9, 0, 0, 0, 0.024, 0, 0, 0, 0.9, 0.965273, 0.0489636, 0.734162)

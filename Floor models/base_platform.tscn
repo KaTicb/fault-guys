@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://dw5weuyupfe6i"]
+
+[ext_resource type="Texture2D" uid="uid://bfkblnnrauyr5" path="res://Textures/floor/dark_wooden_planks_diff_2k.png" id="1_ucw5r"]
+[ext_resource type="Texture2D" uid="uid://jlw4s6jwmtv8" path="res://Textures/floor/dark_wooden_planks_nor_gl_2k.png" id="2_wrtb7"]
+[ext_resource type="Texture2D" uid="uid://1e3ulapvsl2h" path="res://Textures/floor/dark_wooden_planks_rough_2k.png" id="3_1qbbn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yxww8"]
+albedo_texture = ExtResource("1_ucw5r")
+roughness_texture = ExtResource("3_1qbbn")
+normal_enabled = true
+normal_texture = ExtResource("2_wrtb7")
+uv1_triplanar = true
+
+[node name="BasePlatform" type="CSGBox3D"]
+transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 3, 0, 0, 0)
+size = Vector3(1, 0.152832, 1)
+material = SubResource("StandardMaterial3D_yxww8")

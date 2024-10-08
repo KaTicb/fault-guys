@@ -14,7 +14,7 @@ uv1_triplanar = true
 
 [node name="WoodBasePlatform" type="CSGCombiner3D"]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="BasePlatform" type="CSGBox3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 3, 0, 0, 0)
 size = Vector3(1, 0.152832, 1)
 material = SubResource("StandardMaterial3D_7xkko")

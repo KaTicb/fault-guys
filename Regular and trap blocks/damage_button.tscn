@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8vl3ap0jh4u6"]
+
+[ext_resource type="Script" path="res://Floor models/button.gd" id="1_e2n7d"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3jv0u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2kri5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uat3h"]
+
+[node name="DamBut" type="MeshInstance3D"]
+transform = Transform3D(0.9, 0, 0, 0, 0.024, 0, 0, 0, 0.9, 0, 0, 0)
+mesh = SubResource("BoxMesh_3jv0u")
+surface_material_override/0 = SubResource("StandardMaterial3D_2kri5")
+script = ExtResource("1_e2n7d")
+
+[node name="DamageArea3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 1, 0, 1.50001, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea3D"]
+shape = SubResource("BoxShape3D_uat3h")
+
+[connection signal="body_entered" from="DamageArea3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="DamageArea3D" to="." method="_on_area_3d_body_exited"]
