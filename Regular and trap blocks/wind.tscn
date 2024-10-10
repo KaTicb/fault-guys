@@ -1,0 +1,71 @@
+[gd_scene load_steps=12 format=3 uid="uid://biqjj5gq416v1"]
+
+[ext_resource type="Script" path="res://Regular and trap blocks/wind.gd" id="1_rskae"]
+[ext_resource type="Texture2D" uid="uid://7tvt21ihog63" path="res://Textures/wind/wind_particle.png" id="1_yl0wv"]
+[ext_resource type="PackedScene" uid="uid://db2ctceje10y4" path="res://Regular and trap blocks/ventilator_animation.tscn" id="3_3jpj4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_woc8h"]
+
+[sub_resource type="Curve" id="Curve_ax0fo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_o016j"]
+min_value = -1.0
+_data = [Vector2(0, 0.0549451), 0.0, -4.87912, 0, 0, Vector2(0.216216, -0.736264), 0.0, 0.0, 0, 0, Vector2(0.506757, 1), 0.0, 0.0, 0, 0, Vector2(0.75, -0.582418), 0.0, 0.0, 0, 0, Vector2(1, 0.318681), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_05t1y"]
+curve_x = SubResource("Curve_ax0fo")
+curve_y = SubResource("Curve_o016j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_avdoh"]
+particle_flag_align_y = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 4.0
+initial_velocity_max = 5.0
+directional_velocity_min = 2.49998
+directional_velocity_max = 2.49998
+directional_velocity_curve = SubResource("CurveXYZTexture_05t1y")
+gravity = Vector3(0, 0, 0)
+turbulence_noise_strength = 11.21
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1phmx"]
+albedo_texture = ExtResource("1_yl0wv")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dd4m3"]
+material = SubResource("StandardMaterial3D_1phmx")
+radius = 0.02
+height = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bqx7i"]
+height = 2.43169
+radius = 8.31524
+
+[node name="Wind" type="Area3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+script = ExtResource("1_rskae")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_woc8h")
+
+[node name="WindParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1.5, 0, 0)
+emitting = false
+amount = 300
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_avdoh")
+draw_pass_1 = SubResource("CapsuleMesh_dd4m3")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, 0, 0, 0.1, -1.38687, 0.394641, 0)
+shape = SubResource("CylinderShape3D_bqx7i")
+
+[node name="Ventilator" parent="." instance=ExtResource("3_3jpj4")]
+transform = Transform3D(-4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, 0, 0, 0.1, -1.5, 0.388376, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
