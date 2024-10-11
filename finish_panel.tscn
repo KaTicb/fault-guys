@@ -56,5 +56,10 @@ text = "Replay"
 layout_mode = 2
 text = "Menu"
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
 [connection signal="pressed" from="TextureRect/CenterContainer/VBoxContainer/Replay" to="." method="_on_replay_pressed"]
 [connection signal="pressed" from="TextureRect/CenterContainer/VBoxContainer/Menu" to="." method="_on_menu_pressed"]

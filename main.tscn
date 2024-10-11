@@ -60,7 +60,7 @@ offset_bottom = 27.0
 value = 100.0
 script = ExtResource("2_vombr")
 
-[node name="Label" type="Label" parent="ProgressBar"]
+[node name="HP" type="Label" parent="ProgressBar"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 1.0
