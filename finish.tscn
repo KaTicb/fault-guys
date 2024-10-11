@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://bk3tntvv01wym"]
+
+[ext_resource type="Script" path="res://finish.gd" id="1_tgqe4"]
+[ext_resource type="Texture2D" uid="uid://dhhnmjcvr0g4f" path="res://Textures/fence/textures/wood_floor_worn_diff_2k.png" id="2_elljy"]
+[ext_resource type="Texture2D" uid="uid://ckootgashnnec" path="res://Textures/fence/textures/wood_floor_worn_nor_gl_2k.png" id="3_rn2ju"]
+[ext_resource type="Texture2D" uid="uid://dxnegp561oo7m" path="res://Textures/fence/textures/wood_floor_worn_rough_2k.png" id="4_6dxdy"]
+[ext_resource type="PackedScene" uid="uid://ckyjhu5f3t5cn" path="res://Decorate models/finish/scene.gltf" id="5_li1g8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t2u7e"]
+albedo_texture = ExtResource("2_elljy")
+roughness_texture = ExtResource("4_6dxdy")
+normal_enabled = true
+normal_texture = ExtResource("3_rn2ju")
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oqj2k"]
+size = Vector3(15.1132, 4.5575, 1)
+
+[node name="Finish" type="CSGCombiner3D"]
+use_collision = true
+script = ExtResource("1_tgqe4")
+
+[node name="Platform" type="CSGBox3D" parent="."]
+size = Vector3(10, 0.2, 10)
+material = SubResource("StandardMaterial3D_t2u7e")
+
+[node name="FinishLine" parent="." instance=ExtResource("5_li1g8")]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0.2, 0)
+
+[node name="Area3D" type="Area3D" parent="FinishLine"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FinishLine/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0347288, 1.77875, 0)
+shape = SubResource("BoxShape3D_oqj2k")
+
+[connection signal="body_entered" from="FinishLine/Area3D" to="." method="_on_area_3d_body_entered"]
