@@ -9,7 +9,6 @@ albedo_texture = ExtResource("1_ucw5r")
 roughness_texture = ExtResource("3_1qbbn")
 normal_enabled = true
 normal_texture = ExtResource("2_wrtb7")
-uv1_triplanar = true
 
 [node name="BasePlatform" type="CSGBox3D"]
 transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 3, 0, 0, 0)

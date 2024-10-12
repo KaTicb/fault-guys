@@ -42,6 +42,8 @@ func block_activity(body: CharacterBody3D = null):
 		material.albedo_color = Color.RED
 		if is_body_inside and body:
 				body.take_damage(50)
+		await get_tree().create_timer(0.1).timeout
+		material.albedo_color = Color.BLUE
 
 		await get_tree().create_timer(5).timeout
 		

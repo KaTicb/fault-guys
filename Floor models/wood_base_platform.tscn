@@ -10,7 +10,6 @@ albedo_texture = ExtResource("1_8ujpk")
 roughness_texture = ExtResource("3_kjixy")
 normal_enabled = true
 normal_texture = ExtResource("2_ygbuq")
-uv1_triplanar = true
 
 [node name="WoodBasePlatform" type="CSGCombiner3D"]
 

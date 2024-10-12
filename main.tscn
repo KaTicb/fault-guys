@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cgw2xminsxkeh"]
+[gd_scene load_steps=21 format=3 uid="uid://cgw2xminsxkeh"]
 
 [ext_resource type="Texture2D" uid="uid://bl2pib5svpl40" path="res://Textures/ground/aerial_grass_rock_diff_1k.png" id="1_5kih0"]
 [ext_resource type="Script" path="res://time_label.gd" id="1_88qtw"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://de8bqdhu1r65b" path="res://Floor models/wood_base_platform_button.tscn" id="8_ufg5y"]
 [ext_resource type="PackedScene" uid="uid://biqjj5gq416v1" path="res://Regular and trap blocks/wind.tscn" id="10_x4nqe"]
 [ext_resource type="PackedScene" uid="uid://bk3tntvv01wym" path="res://finish.tscn" id="11_1gekn"]
+[ext_resource type="PackedScene" uid="uid://ci5t5nfe2x54b" path="res://Regular and trap blocks/rotate_trap.tscn" id="14_j3no7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nffxo"]
 sky_top_color = Color(0.545098, 0.643137, 1, 1)
@@ -131,78 +132,144 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.4374
 [node name="TripleFense11" parent="StaticBody3D/FenseForStart" instance=ExtResource("6_cvrg0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.438635, 0, 2.51077)
 
-[node name="FirstPath" type="CSGCombiner3D" parent="StaticBody3D"]
+[node name="FirstPath" type="Node3D" parent="StaticBody3D"]
+
+[node name="WoodBasePlatform3" parent="StaticBody3D/FirstPath" instance=ExtResource("6_voujx")]
+transform = Transform3D(-0.497655, 0, 0.867375, 0, 1, 0, -0.867375, 0, -0.497655, -3.1499, 2.63531, -28.8617)
 use_collision = true
 
 [node name="WoodBasePlatform" parent="StaticBody3D/FirstPath" instance=ExtResource("6_voujx")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.667842, 0, -6.4823)
+use_collision = true
 
 [node name="WoodBasePlatform2" parent="StaticBody3D/FirstPath" instance=ExtResource("6_voujx")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.667842, 1.71926, -11.9425)
+use_collision = true
 
-[node name="BasePlatform" parent="StaticBody3D/FirstPath" instance=ExtResource("7_5p8vm")]
-transform = Transform3D(3, 0, 0, 0, 0.40905, -1.72523, 0, 0.287538, 2.4543, -0.6711, 0.862597, -9.22634)
+[node name="WoodBasePlatformButton" parent="StaticBody3D/FirstPath" instance=ExtResource("8_ufg5y")]
+transform = Transform3D(0.488499, 0, -0.872564, 0, 1, 0, 0.872564, 0, 0.488499, -4.6236, 2.63355, -31.4651)
+use_collision = true
 
-[node name="BasePlatform2" parent="StaticBody3D/FirstPath" instance=ExtResource("7_5p8vm")]
-transform = Transform3D(2.75405, -0.19827, 2.40613e-08, 0.997097, 0.384726, -1.63624, 0.648835, 0.25035, 2.5145, 0, 2.01614, -15.0218)
+[node name="WoodBasePlatformButton2" parent="StaticBody3D/FirstPath" instance=ExtResource("8_ufg5y")]
+transform = Transform3D(-0.494397, 0, 0.869236, 0, 1, 0, -0.869236, 0, -0.494397, -6.1023, 2.63355, -34.068)
+use_collision = true
 
-[node name="BasePlatform3" parent="StaticBody3D/FirstPath" instance=ExtResource("7_5p8vm")]
-transform = Transform3D(2.58012, 0.254935, -0.0572456, -1.53043, 0.429989, -0.0415442, 0.028048, 0.0108222, 2.99917, -1.58325, 1.70987, -17.9841)
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="StaticBody3D/FirstPath"]
+use_collision = true
 
-[node name="BasePlatform4" parent="StaticBody3D/FirstPath" instance=ExtResource("7_5p8vm")]
+[node name="BasePlatform6" parent="StaticBody3D/FirstPath/CSGCombiner3D" instance=ExtResource("7_5p8vm")]
+transform = Transform3D(2.80783, 0, 1.05646, 0, 0.5, 0, -1.05646, 0, 2.80783, -7.13661, 2.64737, -36.306)
+
+[node name="BasePlatform5" parent="StaticBody3D/FirstPath/CSGCombiner3D" instance=ExtResource("7_5p8vm")]
+transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 3, -6.98831, 2.64737, -36.9734)
+
+[node name="BasePlatform4" parent="StaticBody3D/FirstPath/CSGCombiner3D" instance=ExtResource("7_5p8vm")]
 transform = Transform3D(2.95363, -0.0742257, 0.278753, 0.466133, 0.492601, -0.217014, -0.242412, 0.0428286, 2.97913, 0, 2.00885, -23.3791)
 use_collision = true
 
-[node name="WoodBasePlatform3" parent="StaticBody3D/FirstPath" instance=ExtResource("6_voujx")]
-transform = Transform3D(-0.497655, 0, 0.867375, 0, 1, 0, -0.867375, 0, -0.497655, -3.1499, 2.63531, -28.8617)
+[node name="BasePlatform3" parent="StaticBody3D/FirstPath/CSGCombiner3D" instance=ExtResource("7_5p8vm")]
+transform = Transform3D(2.58012, 0.254935, -0.0572456, -1.53043, 0.429989, -0.0415442, 0.028048, 0.0108222, 2.99917, -1.58325, 1.70987, -17.9841)
 
-[node name="ThirdPath" type="CSGCombiner3D" parent="StaticBody3D"]
-use_collision = true
+[node name="BasePlatform2" parent="StaticBody3D/FirstPath/CSGCombiner3D" instance=ExtResource("7_5p8vm")]
+transform = Transform3D(2.75405, -0.19827, 2.40613e-08, 0.997097, 0.384726, -1.63624, 0.648835, 0.25035, 2.5145, 0, 2.01614, -15.0218)
+
+[node name="BasePlatform" parent="StaticBody3D/FirstPath/CSGCombiner3D" instance=ExtResource("7_5p8vm")]
+transform = Transform3D(3, 0, 0, 0, 0.40905, -1.72523, 0, 0.287538, 2.4543, -0.6711, 0.862597, -9.22634)
+
+[node name="ThirdPath" type="Node3D" parent="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, 4.5)
 
 [node name="WoodBasePlatform" parent="StaticBody3D/ThirdPath" instance=ExtResource("6_voujx")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.784321, -0.592732, -6.47815)
-
-[node name="BasePlatform" parent="StaticBody3D/ThirdPath" instance=ExtResource("7_5p8vm")]
-transform = Transform3D(3, 0, 0, 0, -2.18557e-08, -3, 0, 0.5, -1.31134e-07, 0.738144, -1.49631, -5.01878)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10.9781, -0.592732, 4.21568)
+use_collision = true
 
 [node name="WoodBasePlatformButton" parent="StaticBody3D/ThirdPath" instance=ExtResource("8_ufg5y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18059, -0.596353, -9.46449)
-
-[node name="BasePlatform2" parent="StaticBody3D/ThirdPath" instance=ExtResource("7_5p8vm")]
-transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 3, 0.775174, -0.596226, -9.46696)
-
-[node name="BasePlatform3" parent="StaticBody3D/ThirdPath" instance=ExtResource("7_5p8vm")]
-transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 3, -5.19456, -0.600709, -9.45761)
-
-[node name="BasePlatform4" parent="StaticBody3D/ThirdPath" instance=ExtResource("7_5p8vm")]
-transform = Transform3D(-1.31134e-07, -0.5, 0, 3, -2.18557e-08, 0, 0, 0, 3, -6.6774, -0.252486, -9.45761)
-
-[node name="BasePlatform5" parent="StaticBody3D/ThirdPath" instance=ExtResource("7_5p8vm")]
-transform = Transform3D(3, 0, 0, 0, -2.18557e-08, -3, 0, 0.5, -1.31134e-07, -5.21678, 0.865792, -7.99379)
-
-[node name="BasePlatform6" parent="StaticBody3D/ThirdPath" instance=ExtResource("7_5p8vm")]
-transform = Transform3D(-1.31134e-07, -0.5, 0, 3, -2.18557e-08, 0, 0, 0, 3, -6.6774, -1.09617, -12.4259)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13.9645, -0.596353, 7.18059)
+use_collision = true
 
 [node name="WoodBasePlatform2" parent="StaticBody3D/ThirdPath" instance=ExtResource("6_voujx")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.50626, -0.599043, -12.3544)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -16.8544, -0.599043, 10.5063)
+use_collision = true
 
-[node name="BasePlatform7" parent="StaticBody3D/ThirdPath" instance=ExtResource("7_5p8vm")]
+[node name="ThirdPath" type="CSGCombiner3D" parent="StaticBody3D/ThirdPath"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.5, 0, 5)
+use_collision = true
+
+[node name="BasePlatform" parent="StaticBody3D/ThirdPath/ThirdPath" instance=ExtResource("7_5p8vm")]
+transform = Transform3D(3, 0, 0, 0, -2.18557e-08, -3, 0, 0.5, -1.31134e-07, 0.738144, -1.49631, -5.01878)
+
+[node name="BasePlatform2" parent="StaticBody3D/ThirdPath/ThirdPath" instance=ExtResource("7_5p8vm")]
+transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 3, 0.775174, -0.596226, -9.46696)
+
+[node name="BasePlatform3" parent="StaticBody3D/ThirdPath/ThirdPath" instance=ExtResource("7_5p8vm")]
+transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 3, -5.19456, -0.600709, -9.45761)
+
+[node name="BasePlatform4" parent="StaticBody3D/ThirdPath/ThirdPath" instance=ExtResource("7_5p8vm")]
+transform = Transform3D(-1.31134e-07, -0.5, 0, 3, -2.18557e-08, 0, 0, 0, 3, -6.6774, -0.252486, -9.45761)
+
+[node name="BasePlatform5" parent="StaticBody3D/ThirdPath/ThirdPath" instance=ExtResource("7_5p8vm")]
+transform = Transform3D(3, 0, 0, 0, -2.18557e-08, -3, 0, 0.5, -1.31134e-07, -5.21678, 0.865792, -7.99379)
+
+[node name="BasePlatform6" parent="StaticBody3D/ThirdPath/ThirdPath" instance=ExtResource("7_5p8vm")]
+transform = Transform3D(-1.31134e-07, -0.5, 0, 3, -2.18557e-08, 0, 0, 0, 3, -6.6774, -1.09617, -12.4259)
+
+[node name="BasePlatform7" parent="StaticBody3D/ThirdPath/ThirdPath" instance=ExtResource("7_5p8vm")]
 transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 3, -5.51408, -0.602306, -15.3661)
 
-[node name="SecondPath" type="CSGCombiner3D" parent="StaticBody3D"]
+[node name="BasePlatform8" parent="StaticBody3D/ThirdPath/ThirdPath" instance=ExtResource("7_5p8vm")]
+transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 3, -5.51408, -0.602306, -18.3771)
+
+[node name="BasePlatform9" parent="StaticBody3D/ThirdPath/ThirdPath" instance=ExtResource("7_5p8vm")]
+transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 3, -5.51408, -0.602306, -21.3673)
+
+[node name="BasePlatform10" parent="StaticBody3D/ThirdPath/ThirdPath" instance=ExtResource("7_5p8vm")]
+transform = Transform3D(3, 0, 0, 0, 0.44165, -1.40643, 0, 0.234404, 2.6499, -5.49607, 0.129478, -24.1111)
+
+[node name="BasePlatform11" parent="StaticBody3D/ThirdPath/ThirdPath" instance=ExtResource("7_5p8vm")]
+transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 3, -6.98661, 2.64862, -39.9587)
+
+[node name="BasePlatform12" parent="StaticBody3D/ThirdPath/ThirdPath" instance=ExtResource("7_5p8vm")]
+transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 3, -4.01438, 2.64862, -39.9587)
+
+[node name="BasePlatform13" parent="StaticBody3D/ThirdPath/ThirdPath" instance=ExtResource("7_5p8vm")]
+transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 3, -1.04782, 2.64862, -39.9587)
+
+[node name="SecondPath" type="Node3D" parent="StaticBody3D"]
+
+[node name="WoodBasePlatform4" parent="StaticBody3D/SecondPath" instance=ExtResource("6_voujx")]
+transform = Transform3D(0.941223, 0, 0.337785, 0, 1, 0, -0.337785, 0, 0.941223, 9.35257, 2.96551, -28.4478)
+use_collision = true
+
+[node name="WoodBasePlatformButton" parent="StaticBody3D/SecondPath" instance=ExtResource("8_ufg5y")]
+transform = Transform3D(0.941929, 0, 0.335813, 0, 1, 0, -0.335813, 0, 0.941929, 12.182, 2.97018, -29.4567)
 use_collision = true
 
 [node name="WoodBasePlatform3" parent="StaticBody3D/SecondPath" instance=ExtResource("6_voujx")]
 transform = Transform3D(0.941223, 0, 0.337785, 0, 1, 0, -0.337785, 0, 0.941223, 6.54323, 2.96551, -27.4269)
+use_collision = true
 
-[node name="WoodBasePlatform4" parent="StaticBody3D/SecondPath" instance=ExtResource("6_voujx")]
-transform = Transform3D(0.941223, 0, 0.337785, 0, 1, 0, -0.337785, 0, 0.941223, 9.35257, 2.96551, -28.4478)
+[node name="WoodBasePlatformButton2" parent="StaticBody3D/SecondPath" instance=ExtResource("8_ufg5y")]
+transform = Transform3D(0.31924, 0, -0.947674, 0, 1, 0, 0.947674, 0, 0.31924, 15.7318, 5.86267, -36.5408)
+use_collision = true
 
-[node name="WoodBasePlatformButton" parent="StaticBody3D/SecondPath" instance=ExtResource("8_ufg5y")]
-transform = Transform3D(0.941929, 0, 0.335813, 0, 1, 0, -0.335813, 0, 0.941929, 12.182, 2.97018, -29.4567)
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="StaticBody3D/SecondPath"]
+use_collision = true
+
+[node name="BasePlatform3" parent="StaticBody3D/SecondPath/CSGCombiner3D" instance=ExtResource("7_5p8vm")]
+transform = Transform3D(2.82593, 0.0878244, 0.858153, 0.0239046, 0.420113, -1.62653, -1.00674, 0.256499, 2.37022, 16.6327, 5.05926, -33.9648)
+
+[node name="BasePlatform" parent="StaticBody3D/SecondPath/CSGCombiner3D" instance=ExtResource("7_5p8vm")]
+transform = Transform3D(2.54088, -0.205037, 1.01513, 1.30734, 0.450026, 0, -0.91367, 0.073729, 2.82303, 14.8887, 3.60596, -30.427)
+
+[node name="BasePlatform2" parent="StaticBody3D/SecondPath/CSGCombiner3D" instance=ExtResource("7_5p8vm")]
+transform = Transform3D(2.81725, -7.45058e-09, 1.03108, -1.86265e-09, 0.5, 1.19209e-07, -1.03108, -2.98023e-08, 2.81725, 17.5531, 4.23376, -31.4164)
+
+[node name="BasePlatform4" parent="StaticBody3D/SecondPath/CSGCombiner3D" instance=ExtResource("7_5p8vm")]
+transform = Transform3D(2.85368, -0.0178372, 0.91927, 0.100581, 0.499681, 0.0368115, -0.919998, -0.000699297, 2.85545, 14.8041, 5.79151, -39.352)
 
 [node name="Bot" parent="." instance=ExtResource("1_ptjcj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+movement_speed = 4.0
 
 [node name="Camera3D2" type="Camera3D" parent="Bot"]
 transform = Transform3D(-1, -2.26267e-08, 8.44439e-08, 0, 0.965926, 0.258819, -8.74228e-08, 0.258819, -0.965926, 0, 2.57926, -2.43481)
@@ -212,4 +279,28 @@ transform = Transform3D(2.98061, 0, 0.340546, 0, 3, 0, -0.340546, 0, 2.98061, -0
 wind_speed = 2.0
 
 [node name="Finish" parent="." instance=ExtResource("11_1gekn")]
-transform = Transform3D(0.230508, 0, -0.97307, 0, 1, 0, 0.97307, 0, 0.230508, 10.4546, -0.322205, -6.58599)
+transform = Transform3D(0.999997, 0, -0.00216409, 0, 1, 0, 0.00216409, 0, 0.999997, 6.38675, 2.05869, -47.221)
+
+[node name="RotateTrap2" parent="." instance=ExtResource("14_j3no7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.91185, -0.596155, -20.2217)
+
+[node name="RotateTrap" parent="." instance=ExtResource("14_j3no7")]
+transform = Transform3D(0.843438, 0, 0.537226, 0, 1, 0, -0.537226, 0, 0.843438, -6.08385, -0.583735, -16.0158)
+
+[node name="RotateTrap3" parent="." instance=ExtResource("14_j3no7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4044, 2.66162, -37.9119)
+
+[node name="Wind2" parent="." instance=ExtResource("10_x4nqe")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -1.04985, 4.14391, -39.9585)
+
+[node name="RotateTrap4" parent="." instance=ExtResource("14_j3no7")]
+transform = Transform3D(0.999965, 0, 0.00839494, 0, 1, 0, -0.00839494, 0, 0.999965, 17.4876, 4.3651, -31.3894)
+
+[node name="RotateTrap5" parent="." instance=ExtResource("14_j3no7")]
+transform = Transform3D(0.919211, 0, 0.393765, 0, 1, 0, -0.393765, 0, 0.919211, 15.0799, 5.88248, -39.6496)
+
+[node name="Wind3" parent="." instance=ExtResource("10_x4nqe")]
+transform = Transform3D(2.86014, 0, 0.905313, 0, 3, 0, -0.905313, 0, 2.86014, 14.7974, 7.34497, -39.3479)
+
+[node name="RotateTrap6" parent="." instance=ExtResource("14_j3no7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.754221, 2.67559, -40.3717)

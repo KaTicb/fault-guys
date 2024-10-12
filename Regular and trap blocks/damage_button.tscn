@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b8vl3ap0jh4u6"]
 
-[ext_resource type="Script" path="res://Floor models/button.gd" id="1_e2n7d"]
+[ext_resource type="Script" path="res://Regular and trap blocks/button.gd" id="1_e2n7d"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_3jv0u"]
 
