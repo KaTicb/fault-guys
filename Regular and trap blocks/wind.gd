@@ -1,4 +1,4 @@
-extends Area3D
+extends StaticBody3D
 
 var is_body_inside: bool = false
 
@@ -7,7 +7,7 @@ var is_body_inside: bool = false
 func _on_body_entered(body: Node3D) -> void:
 	if body:
 		if body.has_method("take_damage"):
-			$WindParticles.emitting = true
+			$WindArea/WindParticles.emitting = true
 			is_body_inside = true
 			print("en")
 			body.is_deviate = true
@@ -23,7 +23,7 @@ func _on_body_entered(body: Node3D) -> void:
 func _on_body_exited(body: Node3D) -> void:
 	if body:
 		if body.has_method("take_damage"):
-			$WindParticles.emitting = false
+			$WindArea/WindParticles.emitting = false
 			body.deviation = Vector3.ZERO
 			is_body_inside = false
 			print("ex")

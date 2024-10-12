@@ -31,6 +31,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Let's goooooooo!!!!"
 
+[node name="Exit" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
 anchor_right = 0.292
@@ -44,5 +48,6 @@ theme_override_font_sizes/font_size = 44
 text = "Fault Guys"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/LetsGo" to="." method="_on_lets_go_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/LetsGo" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/LetsGo" to="." method="_on_lets_go_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

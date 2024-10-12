@@ -4,6 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://7tvt21ihog63" path="res://Textures/wind/wind_particle.png" id="1_yl0wv"]
 [ext_resource type="PackedScene" uid="uid://db2ctceje10y4" path="res://Regular and trap blocks/ventilator_animation.tscn" id="3_3jpj4"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bqx7i"]
+height = 2.43169
+radius = 8.31524
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_woc8h"]
 
 [sub_resource type="Curve" id="Curve_ax0fo"]
@@ -41,18 +45,23 @@ material = SubResource("StandardMaterial3D_1phmx")
 radius = 0.02
 height = 0.1
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_bqx7i"]
-height = 2.43169
-radius = 8.31524
-
-[node name="Wind" type="Area3D"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+[node name="Wind" type="StaticBody3D"]
 script = ExtResource("1_rskae")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 0, 0, 0, 0.3, -4.16061, 1.18392, 0)
+shape = SubResource("CylinderShape3D_bqx7i")
+
+[node name="Ventilator" parent="." instance=ExtResource("3_3jpj4")]
+transform = Transform3D(-1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 0, 0, 0, 0.3, -4.5, 1.16513, 0)
+
+[node name="WindArea" type="Area3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WindArea"]
 shape = SubResource("BoxShape3D_woc8h")
 
-[node name="WindParticles" type="GPUParticles3D" parent="."]
+[node name="WindParticles" type="GPUParticles3D" parent="WindArea"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1.5, 0, 0)
 emitting = false
 amount = 300
@@ -60,12 +69,5 @@ lifetime = 3.0
 process_material = SubResource("ParticleProcessMaterial_avdoh")
 draw_pass_1 = SubResource("CapsuleMesh_dd4m3")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, 0, 0, 0.1, -1.38687, 0.394641, 0)
-shape = SubResource("CylinderShape3D_bqx7i")
-
-[node name="Ventilator" parent="." instance=ExtResource("3_3jpj4")]
-transform = Transform3D(-4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, 0, 0, 0.1, -1.5, 0.388376, 0)
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_entered" from="WindArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="WindArea" to="." method="_on_body_exited"]

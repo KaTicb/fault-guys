@@ -275,8 +275,7 @@ movement_speed = 4.0
 transform = Transform3D(-1, -2.26267e-08, 8.44439e-08, 0, 0.965926, 0.258819, -8.74228e-08, 0.258819, -0.965926, 0, 2.57926, -2.43481)
 
 [node name="Wind" parent="." instance=ExtResource("10_x4nqe")]
-transform = Transform3D(2.98061, 0, 0.340546, 0, 3, 0, -0.340546, 0, 2.98061, -0.00136757, 3.15796, -23.368)
-wind_speed = 2.0
+transform = Transform3D(0.993536, 0, 0.113515, 0, 1, 0, -0.113515, 0, 0.993536, -0.00136757, 3.15796, -23.368)
 
 [node name="Finish" parent="." instance=ExtResource("11_1gekn")]
 transform = Transform3D(0.999997, 0, -0.00216409, 0, 1, 0, 0.00216409, 0, 0.999997, 6.38675, 2.05869, -47.221)
@@ -291,7 +290,7 @@ transform = Transform3D(0.843438, 0, 0.537226, 0, 1, 0, -0.537226, 0, 0.843438, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4044, 2.66162, -37.9119)
 
 [node name="Wind2" parent="." instance=ExtResource("10_x4nqe")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -1.04985, 4.14391, -39.9585)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.04985, 4.14391, -39.9585)
 
 [node name="RotateTrap4" parent="." instance=ExtResource("14_j3no7")]
 transform = Transform3D(0.999965, 0, 0.00839494, 0, 1, 0, -0.00839494, 0, 0.999965, 17.4876, 4.3651, -31.3894)
@@ -300,7 +299,7 @@ transform = Transform3D(0.999965, 0, 0.00839494, 0, 1, 0, -0.00839494, 0, 0.9999
 transform = Transform3D(0.919211, 0, 0.393765, 0, 1, 0, -0.393765, 0, 0.919211, 15.0799, 5.88248, -39.6496)
 
 [node name="Wind3" parent="." instance=ExtResource("10_x4nqe")]
-transform = Transform3D(2.86014, 0, 0.905313, 0, 3, 0, -0.905313, 0, 2.86014, 14.7974, 7.34497, -39.3479)
+transform = Transform3D(0.95338, 0, 0.301771, 0, 1, 0, -0.301771, 0, 0.95338, 14.7974, 7.34497, -39.3479)
 
 [node name="RotateTrap6" parent="." instance=ExtResource("14_j3no7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.754221, 2.67559, -40.3717)
